@@ -1,0 +1,25 @@
+#!/bin/bash
+
+[[ -z $fullpath ]] && fullpath=$(realpath $(dirname $0))
+[[ -z $incdir ]] && incdir=${fullpath}
+[[ -z $srcdir ]] && srcdir=${fullpath}
+[[ -z $libdir ]] && export libdir=${fullpath}/lib
+[[ -z $bindir ]] && export bindir=${fullpath}/bin
+[[ -z $objdir ]] && export objdir=${fullpath}/obj
+
+mkdir -p $libdir
+mkdir -p $bindir
+mkdir -p $objdir
+
+[[ -x ${fullpath}/clean ]] && ${fullpath}/clean
+
+cd $fullpath
+
+gcc -c main.c -o ${objdir}/main.o
+gcc -c identity.c -o ${objdir}/identity.o
+
+ar rcs ${libdir}/libidentity.a ${objdir}/identity.o
+
+gcc ${objdir}/main.o -o ${bindir}/identity -L${libdir} -lidentity
+
+[[ 0 = $? ]] && [[ -f ${bindir}/identity ]] && ${bindir}/identity
