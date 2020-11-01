@@ -19,8 +19,8 @@ gcc -fPIC -c main.c -o ${objdir}/main.o
 gcc -fPIC -c identity.c -o ${objdir}/identity.o
 
 gcc -shared -o ${libdir}/libidentity.so ${objdir}/identity.o
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${libdir}
+# export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${libdir}
 
-gcc -o ${bindir}/identity ${objdir}/main.o -L${libdir} -lidentity
+gcc -o ${bindir}/identity -Wl,-rpath=${libdir} ${objdir}/main.o -L${libdir} -lidentity
 
 [[ 0 = $? ]] && [[ -f ${bindir}/identity ]] && ${bindir}/identity
