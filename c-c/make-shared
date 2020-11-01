@@ -1,0 +1,26 @@
+#!/bin/bash
+
+[[ -z $fullpath ]] && fullpath=$(realpath $(dirname $0))
+[[ -z $incdir ]] && incdir=${fullpath}
+[[ -z $srcdir ]] && srcdir=${fullpath}
+[[ -z $libdir ]] && export libdir=${fullpath}/lib
+[[ -z $bindir ]] && export bindir=${fullpath}/bin
+[[ -z $objdir ]] && export objdir=${fullpath}/obj
+
+mkdir -p $libdir
+mkdir -p $bindir
+mkdir -p $objdir
+
+[[ -x ${fullpath}/clean ]] && ${fullpath}/clean
+
+cd $fullpath
+
+gcc -fPIC -c main.c -o ${objdir}/main.o
+gcc -fPIC -c identity.c -o ${objdir}/identity.o
+
+gcc -shared -o ${libdir}/libidentity.so ${objdir}/identity.o
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${libdir}
+
+gcc -o ${bindir}/identity ${objdir}/main.o -L${libdir} -lidentity
+
+[[ 0 = $? ]] && [[ -f ${bindir}/identity ]] && ${bindir}/identity

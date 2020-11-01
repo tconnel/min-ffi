@@ -1,0 +1,5 @@
+#!/bin/bash
+fullpath=$(realpath $(dirname $0))
+rm -f obj/*
+rm -f lib/*
+rm -f bin/*
