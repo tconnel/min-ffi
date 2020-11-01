@@ -11,7 +11,7 @@ mkdir -p $libdir
 mkdir -p $bindir
 mkdir -p $objdir
 
-# [[ -x ${fullpath}/clean ]] && ${fullpath}/clean
+[[ -x ${fullpath}/clean ]] && ${fullpath}/clean
 
 cd $fullpath
 
