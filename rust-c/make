@@ -1,0 +1,11 @@
+#!/bin/bash
+fullpath=$(realpath $(dirname $0))
+cd $fullpath
+[[ -x clean ]] && ./clean
+mkdir -p obj lib bin
+gcc -c identity.c -o obj/identity.o
+# rustc --crate-type=bin -o bin/rusticles main.rs
+# gcc -fPIC -c main.c -o obj/main.o
+# LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${fullpath}/lib
+# gcc -o bin/rusticles obj/main.o -L${fullpath}/lib -Wl,-rpath=${fullpath}/lib -lidentity
+# [[ -x bin/rusticles ]] && ./bin/rusticles
