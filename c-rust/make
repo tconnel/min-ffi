@@ -1,0 +1,10 @@
+#!/bin/bash
+fullpath=$(realpath $(dirname $0))
+cd $fullpath
+[[ -x clean ]] && ./clean
+mkdir -p obj lib bin
+rustc --crate-type=dylib -o lib/libidentity.so identity.rs
+gcc -fPIC -c main.c -o obj/main.o
+# LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${fullpath}/lib
+gcc -o bin/rusticles obj/main.o -L${fullpath}/lib -Wl,-rpath=${fullpath}/lib -lidentity
+[[ -x bin/rusticles ]] && ./bin/rusticles
