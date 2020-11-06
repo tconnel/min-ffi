@@ -23,4 +23,4 @@ gcc -shared -o ${libdir}/libidentity.so ${objdir}/identity.o
 
 gcc -o ${bindir}/identity -Wl,-rpath=${libdir} ${objdir}/main.o -L${libdir} -lidentity
 
-[[ 0 = $? ]] && [[ -f ${bindir}/identity ]] && ${bindir}/identity
+[[ 0 = $? ]] && [[ -f ${bindir}/identity ]] && ${bindir}/identity || exit 1

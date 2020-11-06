@@ -22,4 +22,4 @@ ar rcs ${libdir}/libidentity.a ${objdir}/identity.o
 
 gcc ${objdir}/main.o -o ${bindir}/identity -L${libdir} -lidentity
 
-[[ 0 = $? ]] && [[ -f ${bindir}/identity ]] && ${bindir}/identity
+[[ 0 = $? ]] && [[ -f ${bindir}/identity ]] && ${bindir}/identity || exit 1
