@@ -3,6 +3,14 @@
 
 #include <stdint.h>
 
-extern int32_t identity(int32_t);
+#define IDENTITY(__type)\
+    extern __type identity_ ## __type(__type);
+
+typedef struct {
+    int32_t i;
+} identity_test;
+
+IDENTITY(int32_t);
+IDENTITY(identity_test);
 
 #endif /* LIB_C_RUST_H */

@@ -1,4 +1,3 @@
-#[no_mangle]
-pub extern "C" fn identity(x: i32) -> i32 {
+pub fn identity<T>(x: T) -> T {
     x
 }
