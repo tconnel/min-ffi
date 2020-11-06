@@ -4,3 +4,4 @@
     __type identity_ ## __type(__type x) { return x; }
 
 IDENTITY_BODY(int)
+IDENTITY_BODY(identity_test)
