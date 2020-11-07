@@ -1,0 +1,10 @@
+#!/bin/bash
+fullpath=$(realpath $(dirname $0))
+cd $fullpath
+[[ -x clean ]] && ./clean
+mkdir -p obj lib bin
+gcc -fPIC -c identity.cpp -o obj/identity.cpp.o -I.
+gcc -shared -o lib/libidentity.so obj/identity.cpp.o
+gcc -fPIC -c main.c -o obj/main.o
+gcc -o bin/identity -Wl,-rpath=lib obj/main.o -Llib -lidentity
+[[ -x bin/identity ]] && ./bin/identity || exit 1
