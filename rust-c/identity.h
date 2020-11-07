@@ -9,6 +9,10 @@
 #define IDENTITY(__type)\
     extern __type identity_ ## __type(__type)
 
+typedef struct {
+    int i;
+} identity_test;
+
 IDENTITY(int);
 IDENTITY(int32_t);
 
