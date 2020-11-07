@@ -5,3 +5,4 @@
 
 IDENTITY_BODY(int)
 IDENTITY_BODY(int32_t);
+IDENTITY_BODY(identity_test);
