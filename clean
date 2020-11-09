@@ -1,0 +1,5 @@
+#!/bin/bash
+$(cd $(realpath $(dirname ${BASH_SOURCE[0]})))
+find . -path \*/lib/\* -print -delete
+find . -path \*/bin/\* -print -delete
+find . -path \*/obj/\* -print -delete
