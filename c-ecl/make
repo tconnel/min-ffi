@@ -1,0 +1,7 @@
+#!/bin/bash
+fullpath=$(realpath $(dirname $0))
+cd $fullpath
+[[ -x clean ]] && ./clean
+mkdir -p bin obj lib
+ecl -o obj/hello-world.o -s -compile hello-world.lisp
+ecl -o lib/hello-world.fas -compile hello-world.lisp
