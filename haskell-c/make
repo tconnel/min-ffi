@@ -3,4 +3,4 @@ fullpath=$(realpath $(dirname $0))
 cd $fullpath
 [[ -x clean ]] && ./clean
 mkdir -p obj lib bin
-ghc -hidir obj -odir obj -o bin/hs-echo echo.hs
+ghc -hidir obj -odir obj -o bin/hs-echo echo.hs >/dev/null
