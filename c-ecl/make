@@ -13,6 +13,6 @@ mkdir -p bin obj lib
 #gcc -o bin/identity main.c -Llib -lidentity -L/usr/local/lib -lecl
 
 ecl -load compile.lisp
-gcc -Wl,-rpath=. -o bin/identity main.c -L. -lidentity -lecl
+gcc -Wl,--no-undefined -Wl,-rpath=. -o bin/identity main.c -L. -lidentity -lecl
 
 [[ -x bin/identity ]] && ./bin/identity || exit 1
