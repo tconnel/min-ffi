@@ -1,2 +1,0 @@
-(princ "hello world")
-(terpri)
