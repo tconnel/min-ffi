@@ -1,12 +1,8 @@
-//extern int L1identity_id_int(int); //NOTE: not stable
-//extern int LC2_id_int(int);
-
 #include <stdio.h>
 #include <ecl/ecl.h>
+extern cl_object LC2id_int(cl_object);
 
 int main() {
-  cl_object val = ecl_make_fixnum(4);
-  printf("%ld\n", ecl_fixnum(val));
-  //printf("%i\n", ecl_callback_0(4));
+  printf("%d\n", ecl_callback_0(5));
   return 0;
 }

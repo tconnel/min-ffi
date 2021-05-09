@@ -6,4 +6,4 @@
 
 (ffi:defcallback id_int :int ((x :int))
   (lambda (x) x))
-  
+

@@ -3,7 +3,9 @@ fullpath=$(realpath $(dirname $0))
 cd $fullpath
 [[ -x clean ]] && ./clean
 mkdir -p bin obj lib
-ecl -o lib/libidentity.so -compile identity.lisp >/dev/null
-gcc -fPIC -c main.c -o obj/main.o
-gcc -o bin/identity -Wl,-rpath=${fullpath}/lib -Wl,--no-undefined obj/main.o -Llib -lidentity
+#ecl -h identity.h -c identity.c -data lib/libidentity.data -o lib/libidentity.so -compile identity.lisp >/dev/null
+ecl -o lib/libidentity.so -compile identity.lisp
+gcc -g -fPIC -c main.c -o obj/main.o
+#gcc -fPIC -c identity.c -o obj/identity.o
+gcc -Wl,-rpath=${fullpath}/lib obj/main.o -lecl -Llib -lidentity -o bin/identity #-Wl,--no-undefined 
 [[ -x bin/identity ]] && ./bin/identity || exit 1
