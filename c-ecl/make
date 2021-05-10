@@ -3,7 +3,5 @@ fullpath=$(realpath $(dirname $0))
 cd $fullpath
 [[ -x clean ]] && ./clean
 mkdir -p bin obj lib
-gcc -shared -Wl,-rpath=. -o lib/libuserlib.so lib.c
-ecl -s -o libidentity.so -load identity.lisp
-gcc -o bin/identity main.c -L. -lidentity -Llib -luserlib -lecl
+gcc -o bin/identity main.c -lecl
 [[ -x bin/identity ]] && ./bin/identity || exit 1
