@@ -1,0 +1,8 @@
+#!/bin/bash -e
+fullpath=$(realpath $(dirname $0))
+cd $fullpath
+[[ -x clean ]] && ./clean
+mkdir -p bin obj lib
+ecl -load compile.lisp
+gcc -Wl,--no-undefined -Wl,-rpath=. -o bin/identity main.c -L. -lidentity -lecl
+[[ -x bin/identity ]] && ./bin/identity || exit 1
