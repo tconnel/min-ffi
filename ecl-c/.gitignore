@@ -2,4 +2,4 @@ obj/*
 bin/*
 lib/*
 *.o
-identity
+*.so
