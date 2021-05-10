@@ -3,4 +3,4 @@ fullpath=$(realpath $(dirname $0))
 cd $fullpath
 [[ -x clean ]] && ./clean
 mkdir -p bin obj lib
-sbcl --script hello_world.lisp
+#sbcl --script hello_world.lisp

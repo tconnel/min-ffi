@@ -4,4 +4,4 @@ cd $fullpath
 [[ -x clean ]] && ./clean
 mkdir -p bin obj lib
 gcc -shared -fPIC -o libtest.so test.c
-ecl -load use_inc.lisp
+#ecl -load use_inc.lisp

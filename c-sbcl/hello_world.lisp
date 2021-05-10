@@ -7,4 +7,4 @@
 ;; (princ (format nil "hello world~&"))
 
 (defun id (x) x)
-(sb-ext:save-lisp-and-die :executable t :purify t)
+(sb-ext:save-lisp-and-die :executable t)

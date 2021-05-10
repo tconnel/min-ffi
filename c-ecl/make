@@ -4,4 +4,4 @@ cd $fullpath
 [[ -x clean ]] && ./clean
 mkdir -p bin obj lib
 gcc -o bin/identity main.c -lecl
-[[ -x bin/identity ]] && ./bin/identity || exit 1
+[[ -x bin/identity ]] && ./bin/identity &>/dev/null || exit 1
