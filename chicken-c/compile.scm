@@ -1,0 +1,1 @@
+(compile -s test.scm)

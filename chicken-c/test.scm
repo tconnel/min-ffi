@@ -1,0 +1,5 @@
+(import (chicken foreign))
+(print "hello world")
+(define plus (lambda (x y) (+ x y)))
+;(define identity (foreign-lambda int "id_int" int))
+(define cfoo (foreign-lambda void "foo"))

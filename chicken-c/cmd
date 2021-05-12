@@ -1,0 +1,5 @@
+'/usr/local/bin/chicken' 'test.scm' -output-file 'test.c' -dynamic -feature chicken-compile-shared
+'gcc' 'test.c' -o 'test.o' -c  -fno-strict-aliasing -fwrapv -DHAVE_CHICKEN_CONFIG_H -DC_ENABLE_PTABLES -Os -fomit-frame-pointer -fPIC -DPIC -DC_SHARED -I/usr/local/include/chicken
+rm test.c
+'gcc' 'test.o' -o 'test.so' -shared -Llib -L/usr/local/lib -Wl,-R/usr/local/lib -lchicken -lm -ldl
+rm test.o

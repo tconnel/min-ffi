@@ -1,8 +1,11 @@
 #include "identity.h"
+#include <stdio.h>
 
-#define IDENTITY_BODY(__type)\
-    __type identity_ ## __type(__type x) { return x; }
+int id_int(int x) {
+    printf("hello\n");
+    return x;
+}
 
-IDENTITY_BODY(int)
-IDENTITY_BODY(int32_t);
-IDENTITY_BODY(identity_test);
+void foo() {
+    printf("cfoo\n");
+}

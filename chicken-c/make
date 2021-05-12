@@ -3,6 +3,6 @@ fullpath=$(realpath $(dirname $0))
 cd $fullpath
 [[ -x clean ]] && ./clean
 mkdir -p obj lib bin
-gcc -c identity.c -o obj/identity.o
-gcc -shared -o lib/libidentity.so obj/identity.o
-#csc -script main.scm
+gcc -o lib/libidentity.so -shared -fPIC -g -I. identity.c 
+csc -s test.scm -Llib #-dry-run
+#-uses identity
