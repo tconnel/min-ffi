@@ -16,5 +16,6 @@ typedef struct {
 IDENTITY(int);
 IDENTITY(int32_t);
 IDENTITY(identity_test);
+extern void foo();
 
 #endif /* IDENTITY_H */
