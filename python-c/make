@@ -1,0 +1,7 @@
+#!/bin/bash
+fullpath=$(realpath $(dirname $0))
+cd $fullpath
+[[ -x clean ]] && ./clean
+mkdir -p obj lib bin
+gcc -fPIC -c identity.c -o obj/identity.o -I.
+gcc -shared -o libidentity.so obj/identity.o
